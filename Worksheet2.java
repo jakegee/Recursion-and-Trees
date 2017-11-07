@@ -1,12 +1,12 @@
 /** @author Jacob Smith
- * 
+ *
  * This class contains the solution for Worksheet2
  */
 
 public class Worksheet2 implements Worksheet2Interface {
-    
+
 	// Exercise 1
-	
+
     public static Tree negateAll(Tree t) { // negateAll returns the negative of positive values, or vice versa
     	if (t.isEmpty()) {
     		return new Tree(); // returns an empty new tree if tree is empty
@@ -21,7 +21,7 @@ public class Worksheet2 implements Worksheet2Interface {
     	if (t.isEmpty()) {
 			return new Tree(); // if tree is empty, return an empty tree
 		} else { // else return a new tree with the root node, then the right and left side are run through the mirror function
-			return new Tree(t.getValue(), mirror(t.getRight()),mirror(t.getLeft())); 
+			return new Tree(t.getValue(), mirror(t.getRight()),mirror(t.getLeft()));
 		}
 	}
 
@@ -53,14 +53,14 @@ public class Worksheet2 implements Worksheet2Interface {
     	if (a.isEmpty()) {
 			return true; // an empty tree is a bst
     	} else if (!a.getLeft().isEmpty() && minimumValueOfTree(a.getLeft()) > a.getValue()) {
-    		return false; // if the left subtree isn't empty and the minimum value of the left is greater than the root it's false 
+    		return false; // if the left subtree isn't empty and the minimum value of the left is greater than the root it's false
     	} else if (!a.getRight().isEmpty() &&  maximumValueOfTree(a.getRight()) < a.getValue()) {
-    		return false; // if the right subtree isn't empty and the maximum value of the right is less than the root it's false 
+    		return false; // if the right subtree isn't empty and the maximum value of the right is less than the root it's false
     	} else { // else the left and right subtrees are run through the function to return the boolean result
     	return (isSearchTree(a.getLeft()) && isSearchTree(a.getRight()));
     	}
     }
-    
+
     public static int minimumValueOfTree(Tree a) { // Helper methods were defined to work through this exercise
     	if (a.getLeft().isEmpty()) {
     		return a.getValue(); // if the left subtree is empty return the root node
@@ -102,18 +102,18 @@ public class Worksheet2 implements Worksheet2Interface {
 
     // Exercise 8
 /*
- * There delete function traverses a BST searching for the value x, in order to delete that node from the tree
+ * The delete function traverses a BST searching for the value x, in order to delete that node from the tree
  * and shift up the nodes that are to the left or right of the tree. It checks to see if the x is lesser or greater
  * than the root node, it checks to see if the left or right subtrees are empty in order to return the left or right
  * subtree, and else it then finally goes through the entire in order to find x and delete it.
  */
     public static Tree delete(int x, Tree a) {
     	if (a.isEmpty()) {
-				return a; 
+				return a;
     	} else if (x < a.getValue()) {
     		return new Tree(a.getValue(), delete(x, a.getLeft()), a.getRight());
     	} else if (x > a.getValue()) {
-    		return new Tree(a.getValue(), a.getLeft(), delete(x, a.getRight()));			
+    		return new Tree(a.getValue(), a.getLeft(), delete(x, a.getRight()));
     	} else if (a.getLeft().isEmpty() && a.getRight().isEmpty()) {
     		return new Tree();
     	} else if (a.getLeft().isEmpty()) {
@@ -136,14 +136,4 @@ public class Worksheet2 implements Worksheet2Interface {
     		// the left and right subtrees
     	}
     }
-		// Exercise 10
-
-    public static Tree insertHB(int x, Tree a) {
-				return new Tree();
-    }
-
-    public static Tree deleteHB(int x, Tree a) {
-				return new Tree();
-    }
-    
 }
